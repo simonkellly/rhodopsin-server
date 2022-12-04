@@ -27,15 +27,15 @@ function parseImage(
 
 async function handleRequest(req: Request): Promise<Response> {
   const reqJson: any = await req.json();
-  
-  const image = reqJson.image;
-  const imageBuffer = Buffer.from(image, "base64");
   const imagePath = `./tmp/${reqJson.name}`; 
+  const image = reqJson.image;
 
+  console.log("Handling request for: ", reqJson.name);
+  
+  const imageBuffer = Buffer.from(image, "base64");
   await Bun.write(imagePath, imageBuffer);
 
   const parsed = parseImage(imagePath, reqJson.lineHeight, reqJson.languages);
-  console.log(parsed);
   fs.unlinkSync(imagePath);
   
   return new Response(parsed);

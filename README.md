@@ -1,7 +1,9 @@
 # rhodopsin-server
-This is a utilty to be able to use the MacOS only Rhodosin auto image occlusion tool from my Windows computer.  
+This is a relay server to allow the use of the [Rhodopsin](https://rhodopsin.ai) auto flashcard occlusion through the Image Occlusion Enhanced add-on for Anki.
 
-Some modifications will need to be made to Image Occlusion source to make this work:
+Rhodopsin is only availible on macOS, so this server allows you to use it on a second windows device.
+
+Some modifications will need to be made to AutoOcclusionService class within the Image Occlusion addon source to make this work:
 ```python
 # logic from is_platform_supported copied to new method: is_platform_actually_supported
 # is_platform_supported and is_auto_occlude_available made to just return True
@@ -64,4 +66,4 @@ To run:
 bun run src/index.ts
 ```
 
-This project was created using `bun init` in bun v0.1.10. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+This project was created using `bun init` in bun v0.2.2 [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
